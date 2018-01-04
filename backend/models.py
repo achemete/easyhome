@@ -11,15 +11,35 @@ from django.utils import timezone
 #from ckeditor_uploader.fields import RichTextUploadingField
 #from ckeditor.fields import RichTextField
 
-# class Section(models.Model):
-# 	author = models.ForeignKey('auth.User')
-# 	title = models.CharField(max_length=200)
-# 	text = models.TextField()
-# 	#text = RichTextUploadingField()
-# 	created_date = models.DateTimeField(
-# 			default=timezone.now)
-# 	published_date = models.DateTimeField(
-# 			blank=True, null=True)
+class Attractions(models.Model):
+	author = models.ForeignKey('auth.User')
+	title = models.CharField(max_length=200)
+	text = models.TextField()
+	#text = RichTextUploadingField()
+	created_date = models.DateTimeField(
+			default=timezone.now)
+	published_date = models.DateTimeField(
+			blank=True, null=True)
+
+class Restaurants(models.Model):
+	author = models.ForeignKey('auth.User')
+	title = models.CharField(max_length=200)
+	text = models.TextField()
+	#text = RichTextUploadingField()
+	created_date = models.DateTimeField(
+			default=timezone.now)
+	published_date = models.DateTimeField(
+			blank=True, null=True)
+
+class Apartments(models.Model):
+	author = models.ForeignKey('auth.User')
+	title = models.CharField(max_length=200)
+	text = models.TextField()
+	#text = RichTextUploadingField()
+	created_date = models.DateTimeField(
+			default=timezone.now)
+	published_date = models.DateTimeField(
+			blank=True, null=True)
 
 # 	def publish(self):
 # 		self.published_date = timezone.now()

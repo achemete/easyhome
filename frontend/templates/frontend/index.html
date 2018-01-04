@@ -16,10 +16,10 @@
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-	<script src="{% static 'js/jquery-1.11.0.min.js' %}"></script>
+	<script src="{% static '../static/js/jquery-1.11.0.min.js' %}"></script>
 	<!-- Custom Theme files -->
-	<link href="{% static 'css/styleFront.css' %}" rel="stylesheet" type="text/css" media="all"/>
-	<link href="{% static 'css/hover.css' %}" rel="stylesheet" media="all">
+	<link href="{% static '../static/css/styleFront.css' %}" rel="stylesheet" type="text/css" media="all"/>
+	<link href="{% static '../static/css/hover.css' %}" rel="stylesheet" media="all">
 	<!-- Custom Theme files -->
 
 	<meta name="keywords" content="EasyHouse" />
@@ -57,7 +57,7 @@
 					<ul class="nav navbar-nav navbar-right">
 						<li><a id="contact-form" href=""><i class="fa fa-envelope-o fa-lg"></i> Contact</a></li>
 						<li><a id="about" href=""><i class="fa fa-question-circle-o fa-lg"></i> About</a></li>
-						<li><a id="login" href=""><i class="fa fa-cogs fa-lg"></i> Backend</a></li>
+						<li><a id="login" href="{% url 'backend:backend_home' %}"><i class="fa fa-cogs fa-lg"></i> Backend</a></li>
 						<li><a id="login" href=""><i class="fa fa-sign-out fa-lg"></i> Log out</a></li>
 					</ul>
 				{% else %}

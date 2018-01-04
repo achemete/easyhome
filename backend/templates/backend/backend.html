@@ -31,7 +31,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="{% url 'backend' %}">EasyHouse - Backend</a> 
+			<a class="navbar-brand" href="{% url 'backend:backend_home' %}">EasyHouse - Backend</a> 
 		</div>
 		<div class="navbar-collapse collapse">
 			<ul class="nav navbar-nav navbar-right">
@@ -62,9 +62,9 @@
 			<ul class="nav nav-stacked">
 				<li class="nav-header"> <a href="#" data-toggle="collapse" data-target="#userMenu">Settings <i class="glyphicon glyphicon-chevron-down"></i></a>
 					<ul class="nav nav-stacked collapse in" id="userMenu">
-						<li><a href=""><i class="glyphicon glyphicon-home"></i> EasyHouse Site</a></li>
-						<li class="active"> <a href="{% url 'backend' %}"><i class="glyphicon glyphicon-home"></i> EasyHouse Backend</a></li>
-						<li><a href=""><i class="glyphicon glyphicon-cog"></i> Operations</a></li>
+						<li><a href="{% url 'frontend:frontend_home' %}"><i class="glyphicon glyphicon-home"></i> EasyHouse Site</a></li>
+						<li class="active"> <a href="{% url 'backend:backend_home' %}"><i class="glyphicon glyphicon-home"></i> EasyHouse Backend</a></li>
+						<li><a href="{% url 'backend:operations' %}"><i class="glyphicon glyphicon-cog"></i> Operations</a></li>
 						<li><a href=""><i class="glyphicon glyphicon-user"></i> Staff List</a></li>
 						<li><a href=""><i class="glyphicon glyphicon-off"></i> Logout</a></li>
 					</ul>
