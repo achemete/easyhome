@@ -11,8 +11,13 @@ from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 
+from backend.models import *
+
 ####
 ## frontend Views
 ####
+
 def frontend_home(request):
-	return render(request, 'frontend/home.html')
+	sections = Restaurants.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+	#sectionsR = Sectionright.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+	return render(request, 'frontend/home.html', {'sections': sections})#, 'sectionsR': sectionsR})

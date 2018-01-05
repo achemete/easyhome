@@ -40,6 +40,11 @@
 			  </div>
 			  <div class="col-md-4 content-grid-3 bg-three">
 			  	<div class="content-grid-text">
+	  				{% for section in sections %}
+						<h3>{{ section.title }}</h3>
+						<p>{{ section.text|linebreaksbr }}</p>
+						<!-- <p>{{ section.text|safe }}</p> -->
+					{% endfor %}
 			  		<h3>Finest Cuisine</h3>
 			  		<p> A Country's cuisine is also the Country's culture. Our website offers you a way to find the best restaurants of the city you are visiting. Let yourself be tempted by the best culinary delights</p>
 			  		<div class="ser-grid">

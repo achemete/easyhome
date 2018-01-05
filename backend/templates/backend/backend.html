@@ -36,7 +36,7 @@
 		<div class="navbar-collapse collapse">
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown">
-					<a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#"><i class="glyphicon glyphicon-user"></i> Admin <span class="caret"></span></a>
+					<a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#"><i class="glyphicon glyphicon-user"></i> {{request.user.username}} <span class="caret"></span></a>
 					<ul id="g-account-menu" class="dropdown-menu" role="menu">
 						<li><a href="#">My Profile</a></li>
 						<li><a href="#">Change My Password</a></li>
@@ -60,20 +60,28 @@
 			<hr>
 
 			<ul class="nav nav-stacked">
-				<li class="nav-header"> <a href="#" data-toggle="collapse" data-target="#userMenu">Settings <i class="glyphicon glyphicon-chevron-down"></i></a>
+				<li><a href="{% url 'frontend:frontend_home' %}"><i class="glyphicon glyphicon-home"></i> Go to EasyHouse Site</a></li>
+				<li class="active"> <a href="{% url 'backend:backend_home' %}"><i class="glyphicon glyphicon-home"></i> EasyHouse Backend</a></li>
+				
+				<li class="nav-header"> <a href="#" data-toggle="collapse" data-target="#userMenu"><strong>Operations</strong> <i class="glyphicon glyphicon-chevron-down"></i></a>
 					<ul class="nav nav-stacked collapse in" id="userMenu">
-						<li><a href="{% url 'frontend:frontend_home' %}"><i class="glyphicon glyphicon-home"></i> EasyHouse Site</a></li>
-						<li class="active"> <a href="{% url 'backend:backend_home' %}"><i class="glyphicon glyphicon-home"></i> EasyHouse Backend</a></li>
-						<li><a href="{% url 'backend:operations' %}"><i class="glyphicon glyphicon-cog"></i> Operations</a></li>
-						<li><a href=""><i class="glyphicon glyphicon-user"></i> Staff List</a></li>
-						<li><a href=""><i class="glyphicon glyphicon-off"></i> Logout</a></li>
+						<li><a href="{% url 'backend:operations' %}"><i class="glyphicon glyphicon-cog"></i> Overview</a></li>
+						<li><a href="{% url 'backend:operations' %}"><i class="glyphicon glyphicon-cog"></i> Accomodations</a></li>
+						<li><a href="{% url 'backend:operations' %}"><i class="glyphicon glyphicon-cog"></i> Restaurants</a></li>
+						<li><a href="{% url 'backend:operations' %}"><i class="glyphicon glyphicon-cog"></i> Attractions</a></li>
+						<li><a href="{% url 'backend:operations' %}"><i class="glyphicon glyphicon-cog"></i> Deals</a></li>
+						<li><a href="{% url 'backend:operations' %}"><i class="glyphicon glyphicon-cog"></i> About</a></li>
+						<li><a href="{% url 'backend:operations' %}"><i class="glyphicon glyphicon-cog"></i> Contact</a></li>
+						<li><a href="{% url 'backend:operations' %}"><i class="glyphicon glyphicon-cog"></i> Users</a></li>
 					</ul>
+					<li><a href=""><i class="glyphicon glyphicon-user"></i> Staff List</a></li>
+					<li><a href=""><i class="glyphicon glyphicon-off"></i> Logout</a></li>
 				</li>
 				<li class="nav-header">
 					<a href="#" data-toggle="collapse" data-target="#menu3"> Social Media <i class="glyphicon glyphicon-chevron-right"></i></a>
 					<ul class="nav nav-stacked collapse" id="menu3">
-						<li><a href=""><i class="glyphicon glyphicon-circle"></i> Facebook</a></li>
-						<li><a href=""><i class="glyphicon glyphicon-circle"></i> Twitter</a></li>
+						<li><a href=""><i style="color: #3b5998" class="fa fa-facebook "></i> Facebook</a></li>
+						<li><a href=""><i style="color: #00aced	" class="fa fa-twitter"></i> Twitter</a></li>
 					</ul>
 				</li>
 			</ul>

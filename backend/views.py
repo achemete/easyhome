@@ -14,8 +14,8 @@ from django.contrib.admin.views.decorators import staff_member_required
 from django.views.generic import TemplateView 
 
 #from frontend.models import 
-from frontend.views import *
-from frontend.urls import *
+import frontend
+
 from .models import Attractions, Restaurants, Apartments
 from .forms import PostRestaurant, PostAttraction, PostApartment
 
@@ -37,10 +37,10 @@ def backend_new_restaurant(request):
 			section.author = request.user
 			section.published_date = timezone.now()
 			section.save()
-			return redirect('back_restaurant_detail', pk=section.pk)
+			return redirect('backend:backend_restaurant_detail', pk=section.pk)
 	else:
 		form = PostRestaurant()
-	return render(request, 'backend/backend_home_new.html', {'form': form})
+	return render(request, 'backend/backend_restaurant_new.html', {'form': form})
 
 def backend_new_attraction(request):
 	if request.method == "POST":
@@ -50,10 +50,10 @@ def backend_new_attraction(request):
 			section.author = request.user
 			section.published_date = timezone.now()
 			section.save()
-			return redirect('back_attraction_detail', pk=section.pk)
+			return redirect('backend:backend_attraction_detail', pk=section.pk)
 	else:
 		form = PostAttraction()
-	return render(request, 'backend/backend_home_new.html', {'form': form})
+	return render(request, 'backend/backend_attraction_new.html', {'form': form})
 
 def backend_new_apartment(request):
 	if request.method == "POST":
@@ -63,10 +63,10 @@ def backend_new_apartment(request):
 			section.author = request.user
 			section.published_date = timezone.now()
 			section.save()
-			return redirect('back_apartment_detail', pk=section.pk)
+			return redirect('backend_apartment_detail', pk=section.pk)
 	else:
 		form = PostApartment()
-	return render(request, 'backend/backend_home_new.html', {'form': form})
+	return render(request, 'backend/backend_apartment_new.html', {'form': form})
 
 def backend_restaurant_detail(request, pk):
 	section = get_object_or_404(Restaurants, pk=pk)
