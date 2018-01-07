@@ -13,6 +13,13 @@ urlpatterns = [
 	url(r'^backend/add_attraction$', views.backend_new_attraction, name='backend_new_attraction'),
 	url(r'^backend/add_apartment$', views.backend_new_apartment, name='backend_new_apartment'),
 
-	url(r'^backend/content/restaurants/(?P<pk>\d+)/$', views.backend_restaurant_detail, name='backend_restaurant_detail'),
+	url(r'^backend/content/restaurant/(?P<pk>\d+)/$', views.backend_restaurant_detail, name='backend_restaurant_detail'),
+	url(r'^backend/content/attraction/(?P<pk>\d+)/$', views.backend_attraction_detail, name='backend_attraction_detail'),
+	url(r'^backend/content/apartment/(?P<pk>\d+)/$', views.backend_apartment_detail, name='backend_apartment_detail'),
+
+    url(r'^backend/content/restaurants/(?P<pk>\d+)/edit/$', login_required(views.backend_restaurant_edit), name='backend_restaurant_edit'),
+    url(r'^backend/content/attraction/(?P<pk>\d+)/edit/$', login_required(views.backend_attraction_edit), name='backend_attraction_edit'),
+    url(r'^backend/content/apartment/(?P<pk>\d+)/edit/$', login_required(views.backend_apartment_edit), name='backend_apartment_edit'),
+
 ]
 

@@ -8,7 +8,7 @@
                 {{ section.published_date }}
             </div>
         {% endif %}
-        <a class="btn btn-default" href=""><span class="glyphicon glyphicon-pencil"></span></a>
+        <a class="btn btn-default" href="{% url 'backend:backend_restaurant_edit' pk=section.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
         <a class="btn btn-default" href=""><span class="glyphicon glyphicon-remove"></span></a>
         <h1>{{ section.title }}</h1>
         <p>{{ section.text|linebreaksbr }}</p>

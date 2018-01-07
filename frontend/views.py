@@ -18,6 +18,7 @@ from backend.models import *
 ####
 
 def frontend_home(request):
-	sections = Restaurants.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-	#sectionsR = Sectionright.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-	return render(request, 'frontend/home.html', {'sections': sections})#, 'sectionsR': sectionsR})
+	restaurants = Restaurants.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+	attractions = Attractions.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+	apartments = Apartments.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+	return render(request, 'frontend/home.html', {'restaurants': restaurants, 'attractions': attractions, 'apartments':apartments})

@@ -8,6 +8,11 @@
 		<div class="contant-main">
 			  <div class="col-md-4 content-grid-1 bg-one">
 			  	<div class="content-grid-text">
+			  		{% for apartment in apartments %}
+						<h3>{{ apartment.title }}</h3>
+						<p>{{ apartment.text|linebreaksbr }}</p>
+						<!-- <p>{{ section.text|safe }}</p> -->
+					{% endfor %}
 			  		<h3>Trendy Houses</h3>
 			  		<p> Find out our most viewed houses and choose the one that fits your expectations for a real confortable experience with the persons you love or just the company of the place you are in</p>
 			  		 <div class=" ser-grid">
@@ -24,6 +29,11 @@
 			  </div>
 			  <div class="col-md-4 content-grid-1 bg-two">
 			  	<div class="content-grid-text">
+			  		{% for attraction in attractions %}
+						<h3>{{ attraction.title }}</h3>
+						<p>{{ attraction.text|linebreaksbr }}</p>
+						<!-- <p>{{ section.text|safe }}</p> -->
+					{% endfor %}
 			  		<h3>Attractions</h3>
 			  		<p> As an extra, our websites helps you to find your own mean of transport. <br>Find out the proposals of the city's best car rental shops and drive through the beauty of the world<br></p>
 			  		<div class=" ser-grid">
@@ -40,9 +50,9 @@
 			  </div>
 			  <div class="col-md-4 content-grid-3 bg-three">
 			  	<div class="content-grid-text">
-	  				{% for section in sections %}
-						<h3>{{ section.title }}</h3>
-						<p>{{ section.text|linebreaksbr }}</p>
+	  				{% for restaurant in restaurants %}
+						<h3>{{ restaurant.title }}</h3>
+						<p>{{ restaurant.text|linebreaksbr }}</p>
 						<!-- <p>{{ section.text|safe }}</p> -->
 					{% endfor %}
 			  		<h3>Finest Cuisine</h3>
