@@ -8,18 +8,32 @@ from django.contrib.auth.decorators import login_required
 app_name = 'backend'
 urlpatterns = [
 	url(r'^backend/$', views.backend_home, name='backend_home'),
-	url(r'^backend/operations$', views.OperationsPageView.as_view(), name='operations'), 
-	url(r'^backend/add_restaurant$', views.backend_new_restaurant, name='backend_new_restaurant'),
-	url(r'^backend/add_attraction$', views.backend_new_attraction, name='backend_new_attraction'),
-	url(r'^backend/add_apartment$', views.backend_new_apartment, name='backend_new_apartment'),
+	url(r'^backend/operations$', views.OperationsPageView.as_view(), name='operations'),
+	url(r'^backend/operations/restaurants$', views.backend_ops_restaurants_PageView.as_view(), name='backend_ops_restaurants'),
+	url(r'^backend/operations/attractions$', views.backend_ops_attractions_PageView.as_view(), name='backend_ops_attractions'),
+	url(r'^backend/operations/apartments$', views.backend_ops_apartments_PageView.as_view(), name='backend_ops_apartments'),
+	url(r'^backend/operations/landing$', views.backend_ops_landing, name='backend_ops_landing'),
+	# url(r'^backend/operations/landing$', views.backend_ops_landing_PageView.as_view(), name='backend_ops_landing'),
+	# url(r'^backend/operations/contact$', views.backend_ops_contact_PageView.as_view(), name='backend_ops_contact'),
+	# url(r'^backend/operations/about$', views.backend_ops_about_PageView.as_view(), name='backend_ops_about'),
+	# url(r'^backend/operations/deals$', views.backend_ops_apartments_PageView.as_view(), name='backend_ops_deals'),
 
-	url(r'^backend/content/restaurant/(?P<pk>\d+)/$', views.backend_restaurant_detail, name='backend_restaurant_detail'),
-	url(r'^backend/content/attraction/(?P<pk>\d+)/$', views.backend_attraction_detail, name='backend_attraction_detail'),
-	url(r'^backend/content/apartment/(?P<pk>\d+)/$', views.backend_apartment_detail, name='backend_apartment_detail'),
 
-    url(r'^backend/content/restaurants/(?P<pk>\d+)/edit/$', login_required(views.backend_restaurant_edit), name='backend_restaurant_edit'),
-    url(r'^backend/content/attraction/(?P<pk>\d+)/edit/$', login_required(views.backend_attraction_edit), name='backend_attraction_edit'),
-    url(r'^backend/content/apartment/(?P<pk>\d+)/edit/$', login_required(views.backend_apartment_edit), name='backend_apartment_edit'),
+	url(r'^backend/landing/add_restaurant$', views.landing_new_restaurant, name='landing_new_restaurant'),
+	url(r'^backend/landing/add_attraction$', views.landing_new_attraction, name='landing_new_attraction'),
+	url(r'^backend/landing/add_apartment$', views.landing_new_apartment, name='landing_new_apartment'),
+
+	url(r'^backend/landing/restaurant/(?P<pk>\d+)/$', views.landing_restaurant_detail, name='landing_restaurant_detail'),
+	url(r'^backend/landing/attraction/(?P<pk>\d+)/$', views.landing_attraction_detail, name='landing_attraction_detail'),
+	url(r'^backend/landing/apartment/(?P<pk>\d+)/$', views.landing_apartment_detail, name='landing_apartment_detail'),
+
+    url(r'^backend/landing/restaurants/(?P<pk>\d+)/edit/$', login_required(views.landing_restaurant_edit), name='landing_restaurant_edit'),
+    url(r'^backend/landing/attraction/(?P<pk>\d+)/edit/$', login_required(views.landing_attraction_edit), name='landing_attraction_edit'),
+    url(r'^backend/landing/apartment/(?P<pk>\d+)/edit/$', login_required(views.landing_apartment_edit), name='landing_apartment_edit'),
+
+	url(r'^backend/landing/restaurants/(?P<pk>\d+)/remove/$', login_required(views.landing_restaurant_remove), name='landing_restaurant_remove'),
+	url(r'^backend/landing/attraction/(?P<pk>\d+)/remove/$', login_required(views.landing_attraction_remove), name='landing_attraction_remove'),
+	url(r'^backend/landing/apartment/(?P<pk>\d+)/remove/$', login_required(views.landing_apartment_remove), name='landing_apartment_remove'),
 
 ]
 
