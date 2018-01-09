@@ -8,5 +8,6 @@ app_name='frontend'
 urlpatterns = [
 
 	url(r'^$', views.frontend_home, name='frontend_home'),
-
+	#url(r'^about$', views.AboutPageView.as_view(), name='AboutPageView'),
+	url(r'^about$', views.frontend_contact, name='frontend_contact'),
 ]

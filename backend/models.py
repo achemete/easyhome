@@ -41,6 +41,62 @@ class Apartments(models.Model):
 	published_date = models.DateTimeField(
 			blank=True, null=True)
 
+class About_PageTitle(models.Model):
+	author = models.ForeignKey('auth.User')
+	title = models.CharField(max_length=200)
+	created_date = models.DateTimeField(
+			default=timezone.now)
+	published_date = models.DateTimeField(
+			blank=True, null=True)
+
+class About_PresentationText(models.Model):
+	author = models.ForeignKey('auth.User')
+	title = models.CharField(max_length=200)
+	text = models.TextField()
+	#text = RichTextUploadingField()
+	created_date = models.DateTimeField(
+			default=timezone.now)
+	published_date = models.DateTimeField(
+			blank=True, null=True)
+
+class About_TeamTitle(models.Model):
+	author = models.ForeignKey('auth.User')
+	title = models.CharField(max_length=200)
+	created_date = models.DateTimeField(
+			default=timezone.now)
+	published_date = models.DateTimeField(
+			blank=True, null=True)
+
+class About_MemberOne(models.Model):
+	author = models.ForeignKey('auth.User')
+	title = models.CharField(max_length=200)
+	text = models.TextField()
+	#text = RichTextUploadingField()
+	created_date = models.DateTimeField(
+			default=timezone.now)
+	published_date = models.DateTimeField(
+			blank=True, null=True)
+
+class About_MemberTwo(models.Model):
+	author = models.ForeignKey('auth.User')
+	title = models.CharField(max_length=200)
+	text = models.TextField()
+	#text = RichTextUploadingField()
+	created_date = models.DateTimeField(
+			default=timezone.now)
+	published_date = models.DateTimeField(
+			blank=True, null=True)
+
+class About_MemberThree(models.Model):
+	author = models.ForeignKey('auth.User')
+	title = models.CharField(max_length=200)
+	text = models.TextField()
+	#text = RichTextUploadingField()
+	created_date = models.DateTimeField(
+			default=timezone.now)
+	published_date = models.DateTimeField(
+			blank=True, null=True)
+
 # 	def publish(self):
 # 		self.published_date = timezone.now()
 # 		self.save()

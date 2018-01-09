@@ -11,8 +11,11 @@ from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 
+from django.views.generic import TemplateView 
+
 from backend.models import *
 
+import backend
 ####
 ## frontend Views
 ####
@@ -22,3 +25,12 @@ def frontend_home(request):
 	attractions = Attractions.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
 	apartments = Apartments.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
 	return render(request, 'frontend/home.html', {'restaurants': restaurants, 'attractions': attractions, 'apartments':apartments})
+
+def frontend_contact(request):
+	pageTitles = About_PageTitle.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+	#attractions = Attractions.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+	#apartments = Apartments.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+	return render(request, 'frontend/about.html', {'pageTitles': pageTitles})#, 'attractions': attractions, 'apartments':apartments})
+
+# class AboutPageView(TemplateView):
+# 	template_name = "frontend/about.html"
