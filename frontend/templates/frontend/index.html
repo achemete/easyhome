@@ -40,7 +40,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-			<a class="navbar-brand" href="#">Easy Home</a>
+			<a class="navbar-brand" href="{% url 'frontend:frontend_home' %}">Easy Home</a>
 			</div>
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav">
@@ -56,7 +56,7 @@
 				{% if user.is_authenticated %}
 					<ul class="nav navbar-nav navbar-right">
 						<li><a id="contact-form" href=""><i class="fa fa-envelope-o fa-lg"></i> Contact</a></li>
-						<li><a id="about" href=""><i class="fa fa-question-circle-o fa-lg"></i> About</a></li>
+						<li><a id="about" href="{% url 'frontend:frontend_about' %}"><i class="fa fa-question-circle-o fa-lg"></i> About</a></li>
 						<li><a id="login" href="{% url 'backend:backend_home' %}"><i class="fa fa-cogs fa-lg"></i> Backend</a></li>
 						<li><a id="login" href=""><i class="fa fa-sign-out fa-lg"></i> Log out</a></li>
 					</ul>

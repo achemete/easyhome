@@ -58,9 +58,12 @@ def backend_ops_landing(request):
 # add all the iterators
 def backend_ops_about(request):
 	titles = About_PageTitle.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-	# attractions = Attractions.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-	# apartments = Apartments.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-	return render(request, 'backend/backend_ops_about.html', {'titles': titles})#, 'attractions': attractions, 'apartments':apartments})
+	presentations = About_PresentationText.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+	teams = About_TeamTitle.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+	memberones = About_MemberOne.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+	membertwos = About_MemberTwo.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+	memberthrees = About_MemberThree.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+	return render(request, 'backend/backend_ops_about.html', {'titles': titles, 'presentations': presentations, 'teams':teams, 'memberones':memberones, 'membertwos':membertwos, 'memberthrees':memberthrees})
 
 def landing_new_restaurant(request):
 	if request.method == "POST":
@@ -192,10 +195,10 @@ def about_new_presentation(request):
 			section.author = request.user
 			section.published_date = timezone.now()
 			section.save()
-			return redirect('backend:landing_restaurant_detail', pk=section.pk)
+			return redirect('backend:about_presentation_detail', pk=section.pk)
 	else:
 		form = PostAboutPresentation()
-	return render(request, 'backend/landing_restaurant_new.html', {'form': form})
+	return render(request, 'backend/about_presentation_new.html', {'form': form})
 
 def about_new_teamTitle(request):
 	if request.method == "POST":
@@ -205,10 +208,10 @@ def about_new_teamTitle(request):
 			section.author = request.user
 			section.published_date = timezone.now()
 			section.save()
-			return redirect('backend:landing_restaurant_detail', pk=section.pk)
+			return redirect('backend:about_teamTitle_detail', pk=section.pk)
 	else:
 		form = PostAboutTeamTitle()
-	return render(request, 'backend/landing_restaurant_new.html', {'form': form})
+	return render(request, 'backend/about_teamTitle_new.html', {'form': form})
 
 def about_new_member1(request):
 	if request.method == "POST":
@@ -218,10 +221,10 @@ def about_new_member1(request):
 			section.author = request.user
 			section.published_date = timezone.now()
 			section.save()
-			return redirect('backend:landing_restaurant_detail', pk=section.pk)
+			return redirect('backend:about_memberOne_detail', pk=section.pk)
 	else:
 		form = PostAboutMemberOne()
-	return render(request, 'backend/landing_restaurant_new.html', {'form': form})
+	return render(request, 'backend/about_member1_new.html', {'form': form})
 
 def about_new_member2(request):
 	if request.method == "POST":
@@ -231,10 +234,10 @@ def about_new_member2(request):
 			section.author = request.user
 			section.published_date = timezone.now()
 			section.save()
-			return redirect('backend:landing_restaurant_detail', pk=section.pk)
+			return redirect('backend:about_memberTwo_detail', pk=section.pk)
 	else:
 		form = PostAboutMemberTwo()
-	return render(request, 'backend/landing_restaurant_new.html', {'form': form})
+	return render(request, 'backend/about_member2_new.html', {'form': form})
 
 def about_new_member3(request):
 	if request.method == "POST":
@@ -244,35 +247,34 @@ def about_new_member3(request):
 			section.author = request.user
 			section.published_date = timezone.now()
 			section.save()
-			return redirect('backend:landing_restaurant_detail', pk=section.pk)
+			return redirect('backend:about_memberThree_detail', pk=section.pk)
 	else:
 		form = PostAboutMemberThree()
-	return render(request, 'backend/landing_restaurant_new.html', {'form': form})
+	return render(request, 'backend/about_member3_new.html', {'form': form})
 
 def about_pageTitle_detail(request, pk):
 	section = get_object_or_404(About_PageTitle, pk=pk)
 	return render(request, 'backend/about_pageTitle_detail.html', {'section': section})
 
-#create and change html files with its respective keys
 def about_presentation_detail(request, pk):
 	section = get_object_or_404(About_PresentationText, pk=pk)
-	return render(request, 'backend/about_pageTitle_detail.html', {'section': section})
+	return render(request, 'backend/about_presentation_detail.html', {'section': section})
 
 def about_teamTitle_detail(request, pk):
 	section = get_object_or_404(About_TeamTitle, pk=pk)
-	return render(request, 'backend/about_pageTitle_detail.html', {'section': section})
+	return render(request, 'backend/about_teamTitle_detail.html', {'section': section})
 
 def about_member1_detail(request, pk):
 	section = get_object_or_404(About_MemberOne, pk=pk)
-	return render(request, 'backend/about_pageTitle_detail.html', {'section': section})
+	return render(request, 'backend/about_member1_detail.html', {'section': section})
 
 def about_member2_detail(request, pk):
 	section = get_object_or_404(About_MemberTwo, pk=pk)
-	return render(request, 'backend/about_pageTitle_detail.html', {'section': section})
+	return render(request, 'backend/about_member2_detail.html', {'section': section})
 
 def about_member3_detail(request, pk):
 	section = get_object_or_404(About_MemberThree, pk=pk)
-	return render(request, 'backend/about_pageTitle_detail.html', {'section': section})
+	return render(request, 'backend/about_member3_detail.html', {'section': section})
 
 def about_pageTitle_edit(request, pk):
 	section = get_object_or_404(About_PageTitle, pk=pk)
@@ -298,7 +300,7 @@ def about_presentation_edit(request, pk):
 			section.author = request.user
 			section.published_date = timezone.now()
 			section.save()
-			return redirect('backend:about_pageTitle_detail', pk=section.pk)
+			return redirect('backend:about_presentation_detail', pk=section.pk)
 	else:
 		form = PostAboutPresentation(instance=section)
 	return render(request, 'backend/section_edit.html', {'form': form})
@@ -312,13 +314,13 @@ def about_teamTitle_edit(request, pk):
 			section.author = request.user
 			section.published_date = timezone.now()
 			section.save()
-			return redirect('backend:about_pageTitle_detail', pk=section.pk)
+			return redirect('backend:about_teamTitle_detail', pk=section.pk)
 	else:
 		form = PostAboutTeamTitle(instance=section)
 	return render(request, 'backend/section_edit.html', {'form': form})
 
 def about_member1_edit(request, pk):
-	section = get_object_or_404(PostAboutMemberOne, pk=pk)
+	section = get_object_or_404(About_MemberOne, pk=pk)
 	if request.method == "POST":
 		form = PostAboutMemberOne(request.POST, instance=section)
 		if form.is_valid():
@@ -326,13 +328,13 @@ def about_member1_edit(request, pk):
 			section.author = request.user
 			section.published_date = timezone.now()
 			section.save()
-			return redirect('backend:about_pageTitle_detail', pk=section.pk)
+			return redirect('backend:about_memberOne_detail', pk=section.pk)
 	else:
 		form = PostAboutMemberOne(instance=section)
 	return render(request, 'backend/section_edit.html', {'form': form})
 
 def about_member2_edit(request, pk):
-	section = get_object_or_404(PostAboutMemberTwo, pk=pk)
+	section = get_object_or_404(About_MemberTwo, pk=pk)
 	if request.method == "POST":
 		form = PostAboutMemberTwo(request.POST, instance=section)
 		if form.is_valid():
@@ -340,13 +342,13 @@ def about_member2_edit(request, pk):
 			section.author = request.user
 			section.published_date = timezone.now()
 			section.save()
-			return redirect('backend:about_pageTitle_detail', pk=section.pk)
+			return redirect('backend:about_memberTwo_detail', pk=section.pk)
 	else:
 		form = PostAboutMemberTwo(instance=section)
 	return render(request, 'backend/section_edit.html', {'form': form})
 
 def about_member3_edit(request, pk):
-	section = get_object_or_404(PostAboutMemberThree, pk=pk)
+	section = get_object_or_404(About_MemberThree, pk=pk)
 	if request.method == "POST":
 		form = PostAboutMemberThree(request.POST, instance=section)
 		if form.is_valid():
@@ -354,7 +356,7 @@ def about_member3_edit(request, pk):
 			section.author = request.user
 			section.published_date = timezone.now()
 			section.save()
-			return redirect('backend:about_pageTitle_detail', pk=section.pk)
+			return redirect('backend:about_memberThree_detail', pk=section.pk)
 	else:
 		form = PostAboutMemberThree(instance=section)
 	return render(request, 'backend/section_edit.html', {'form': form})
@@ -364,7 +366,6 @@ def about_pageTitle_remove(request, pk):
 	title.delete()
 	return redirect('backend:backend_ops_about')
 
-# create urls
 def about_presentation_remove(request, pk):
 	title = get_object_or_404(About_PresentationText, pk=pk)
 	title.delete()

@@ -13,11 +13,13 @@
 				<h4>{{ pageTitle.title }}</h4>
 			{% endfor %}
 			<div class="col-md-6 about-left">
-				<a href="single.html"><img src="images/ab.jpg" alt="" class="img-responsive"></a>
+				<a href="#"><img src="{% static '../static/images/ab.jpg' %}" alt="" class="img-responsive"></a>
 			</div>
 			<div class="col-md-6 about-rigth">
-				 <h3><a href="single.html">Nam libero tempore, cum soluta</a></h3>
-				 <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.There are many variations of passages of Lorem Ipsum available, but the majority have suffered.</p>
+				{% for presentation in presentations %}
+				<h3><a href="single.html">{{ presentation.title }}</a></h3>
+				<p>{{ presentation.text|linebreaksbr }}</p>
+				{% endfor %}
 			</div>
 		  <div class="clearfix"> </div>
 		</div>
@@ -29,46 +31,37 @@
 	<div class="container">
 		<div class="team-main">
 			<h4>Our Team</h4>
+			{% for team in teams %}
+				<h4>{{ team.title }}</h4>
+			{% endfor %}
 			<div class="col-md-3 team-grid">
-				<img src="images/t1.jpg" alt="" class="img-responsive">
-				<h3><a class="popup-with-zoom-anim" href="#small-dialog">Andrea Catani</a></h3>
-				<p>On the other hand, we denounce with righteous indignation.</p>
+				<img src="{% static '../static/images/t1.jpg' %}" alt="" class="img-responsive">
+				{% for memberone in memberones %}
+				<h3><a class="popup-with-zoom-anim" href="#small-dialog">{{ memberone.title }}</a></h3>
+				<p>{{ memberone.text|linebreaksbr }}</p>
+				{% endfor %}
 			</div>
 			<div class="col-md-3 team-grid">
-				<img src="images/t2.jpg" alt="" class="img-responsive">
-				<h3><a class="popup-with-zoom-anim" href="#small-dialog">Héctor Martinez</a></h3>
-				<p>On the other hand, we denounce with righteous indignation.</p>
+				<img src="{% static '../static/images/t2.jpg' %}" alt="" class="img-responsive">
+				{% for membertwo in membertwos %}
+				<h3><a class="popup-with-zoom-anim" href="#small-dialog">{{ membertwo.title }}</a></h3>
+				<p>{{ membertwo.text|linebreaksbr }}</p>
+				{% endfor %}
 			</div>
 			<div class="col-md-3 team-grid">
-				<img src="images/t3.jpg" alt="" class="img-responsive">
-				<h3><a class="popup-with-zoom-anim" href="#small-dialog">Ming Yuan(?)</a></h3>
-				<p>On the other hand, we denounce with righteous indignation.</p>
+				<img src="{% static '../static/images/t3.jpg' %}" alt="" class="img-responsive">
+				{% for memberthree in memberthrees %}
+				<h3><a class="popup-with-zoom-anim" href="#small-dialog">{{ memberthree.title }}</a></h3>
+				<p>{{ memberthree.text|linebreaksbr }}</p>
+				{% endfor %}
 			</div>
 			<div class="col-md-3 team-grid">
-				<img src="images/t4.jpg" alt="" class="img-responsive">
-				<h3><a class="popup-with-zoom-anim" href="#small-dialog">Danilo Giacchi</a></h3>
+				<img src="{% static '../static/images/t4.jpg' %}" alt="" class="img-responsive">
+				<h3><a class="popup-with-zoom-anim" href="#small-dialog">Ming Yuan (?)</a></h3>
 				<p>On the other hand, we denounce with righteous indignation.</p>
 			</div>
 		</div>
 	</div>
 </div>
-<!---->
-<div id="popup">
-				 <div id="small-dialog" class="mfp-hide">
-					<div class="pop_up">
-					 	<div class="payment-online-form-left">
-							<h4>Rackham</h4>
-							<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae.The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.</p>
-								<span class="fa"> </span>
-		                        <span class="tw"> </span>
-		                        <span class="g"> </span>
-
-								<div class="clear"></div>
-						</div>
-		  			</div>
-				</div>
-				</div>
-
-<!--pop-up-grid-->
 
 {% endblock %}

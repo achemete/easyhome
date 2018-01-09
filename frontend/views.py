@@ -26,11 +26,13 @@ def frontend_home(request):
 	apartments = Apartments.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
 	return render(request, 'frontend/home.html', {'restaurants': restaurants, 'attractions': attractions, 'apartments':apartments})
 
-def frontend_contact(request):
+def frontend_about(request):
 	pageTitles = About_PageTitle.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-	#attractions = Attractions.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-	#apartments = Apartments.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-	return render(request, 'frontend/about.html', {'pageTitles': pageTitles})#, 'attractions': attractions, 'apartments':apartments})
-
+	presentations = About_PresentationText.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+	teams = About_TeamTitle.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+	memberones = About_MemberOne.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+	membertwos = About_MemberTwo.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+	memberthrees = About_MemberThree.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+	return render(request, 'frontend/about.html', {'pageTitles': pageTitles, 'presentations': presentations, 'teams':teams, 'memberones':memberones, 'membertwos':membertwos, 'memberthrees':memberthrees})
 # class AboutPageView(TemplateView):
 # 	template_name = "frontend/about.html"
