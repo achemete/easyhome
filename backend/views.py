@@ -390,3 +390,7 @@ def about_member3_remove(request, pk):
 	title = get_object_or_404(About_MemberThree, pk=pk)
 	title.delete()
 	return redirect('backend:backend_ops_about')
+
+def staff_list(request):
+	user = User.objects.all()
+	return render(request, 'backend/staff_list_users.html', {'user': user})

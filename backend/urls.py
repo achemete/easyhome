@@ -67,5 +67,7 @@ urlpatterns = [
 	url(r'^backend/about/member3/(?P<pk>\d+)/remove/$', login_required(views.about_member3_remove), name='about_member3_remove'),
 
 
+	url(r'^backend/staff/list/$', login_required(views.staff_list), name='staff_list'),
+
 ]
 
