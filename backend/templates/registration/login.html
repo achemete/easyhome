@@ -1,0 +1,50 @@
+{% extends 'frontend/index.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+<!-- <div class="alert alert-warning alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <strong>Announcement:</strong> Login temporarily disabled due maintenance.
+</div> -->
+
+{% if form.errors %}
+<p style="color:red;">Your username and password didn't match. Please try again.</p>
+{% endif %}
+
+{% if next %}
+    {% if user.is_authenticated %}
+    <p>Your account doesn't have access to this page. To proceed,
+    please login with an account that has access.</p>
+    {% else %}
+    <p>Please login to see this page.</p>
+    {% endif %}
+{% endif %}
+<div id="loginbox" style="margin-top:50px" class="login-box">
+
+<form id="loginform" method="post" action="{% url 'frontend:login' %}" class="form-horizontal" role="form">
+{% csrf_token %}
+<div>
+  <td>{{ form.username.label_tag }}</td>
+  <td>{{ form.username }}</td>
+</div>
+<div>
+  <td>{{ form.password.label_tag }}</td>
+  <td>{{ form.password }}</td>
+</div>
+
+<div style="margin-top:10px" class="form-group">
+
+      <div class="col-sm-12 controls">
+        <input type="submit" value="login" id="btn-login" class="btn btn-success"/>
+        <input type="hidden" name="next" value="{{ next }}" />
+        <a disabled id="btn-fblogin" href="#" class="btn btn-primary">Login with Facebook</a>
+      </div>
+    </div>
+
+</form>
+
+{# Assumes you setup the password_reset view in your URLconf #}
+<p><a disabled href="{% url 'frontend:password_reset' %}">Lost password?</a></p>
+
+{% endblock %}

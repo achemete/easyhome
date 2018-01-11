@@ -34,5 +34,12 @@ def frontend_about(request):
 	membertwos = About_MemberTwo.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
 	memberthrees = About_MemberThree.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
 	return render(request, 'frontend/about.html', {'pageTitles': pageTitles, 'presentations': presentations, 'teams':teams, 'memberones':memberones, 'membertwos':membertwos, 'memberthrees':memberthrees})
-# class AboutPageView(TemplateView):
-# 	template_name = "frontend/about.html"
+
+class frontend_contact(TemplateView):
+ 	template_name = "frontend/contact.html"
+
+class ProfilePageView(TemplateView):
+ 	template_name = "frontend/profile.html"
+
+class LogoutPageView(TemplateView):
+ 	template_name = "registration/logged_out.html"

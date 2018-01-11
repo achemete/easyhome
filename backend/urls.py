@@ -69,5 +69,9 @@ urlpatterns = [
 
 	url(r'^backend/staff/list/$', login_required(views.staff_list), name='staff_list'),
 
+
+    url(r'^signup/$', views.signup, name='signup'),
+
+
 ]
 

@@ -4,6 +4,18 @@ from django.contrib.auth.models import User
 
 from .models import Attractions, Restaurants, Apartments, About_PageTitle, About_PresentationText, About_TeamTitle, About_MemberOne, About_MemberTwo, About_MemberThree
 
+class SignUpForm(UserCreationForm):
+
+    first_name = forms.CharField(max_length=30, required=False, help_text='Optional.')
+    last_name = forms.CharField(max_length=30, required=False, help_text='Optional.')
+    location = forms.CharField(max_length=30, required=False, help_text='Optional.')
+    postal = forms.CharField(max_length=30, required=False, help_text='Optional.')
+    email = forms.EmailField(max_length=254, help_text='Required. Inform a valid email address.')
+
+    class Meta:
+        model = User
+        fields = ('username', 'first_name', 'last_name', 'location', 'postal', 'email', 'password1', 'password2', )
+
 class PostAttraction(forms.ModelForm):
 
     class Meta:
