@@ -11,7 +11,7 @@ urlpatterns = [
 	#url(r'^about$', views.AboutPageView.as_view(), name='AboutPageView'),
 	url(r'^about$', views.frontend_about, name='frontend_about'),
 	#url(r'^contact$', views.frontend_contact, name='frontend_contact'),
-	url(r'^contact$', views.frontend_contact.as_view(), name='frontend_contact'),
+	url(r'^contact$', views.frontend_contact, name='frontend_contact'),
 
     url(r'^accounts/', include('django.contrib.auth.urls')),
     url(r'^accounts/profile', views.ProfilePageView.as_view(), name='profile'),

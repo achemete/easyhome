@@ -408,7 +408,7 @@ def contact_new_header(request):
 			return redirect('backend:contact_header_detail', pk=section.pk)
 	else:
 		form = PostContactHeader()
-	return render(request, 'backend/about_header_new.html', {'form': form})
+	return render(request, 'backend/contact_header_new.html', {'form': form})
 
 def contact_new_information(request):
 	if request.method == "POST":
