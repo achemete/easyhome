@@ -35,8 +35,11 @@ def frontend_about(request):
 	memberthrees = About_MemberThree.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
 	return render(request, 'frontend/about.html', {'pageTitles': pageTitles, 'presentations': presentations, 'teams':teams, 'memberones':memberones, 'membertwos':membertwos, 'memberthrees':memberthrees})
 
-class frontend_contact(TemplateView):
- 	template_name = "frontend/contact.html"
+def frontend_contact(request):
+	headers = Contact_Header.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+	informations = Contact_Information.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+	addresses = Contact_Address.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+	return render(request, 'frontend/contact.html', {'headers': headers, 'informations': informations, 'addresses':addresses})
 
 class ProfilePageView(TemplateView):
  	template_name = "frontend/profile.html"

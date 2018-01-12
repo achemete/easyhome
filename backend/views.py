@@ -65,6 +65,12 @@ def backend_ops_about(request):
 	memberthrees = About_MemberThree.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
 	return render(request, 'backend/backend_ops_about.html', {'titles': titles, 'presentations': presentations, 'teams':teams, 'memberones':memberones, 'membertwos':membertwos, 'memberthrees':memberthrees})
 
+def backend_ops_contact(request):
+	headers = Contact_Header.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+	informations = Contact_Information.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+	addresses = Contact_Address.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+	return render(request, 'backend/backend_ops_contact.html', {'headers': headers, 'informations': informations, 'addresses':addresses})
+
 def landing_new_restaurant(request):
 	if request.method == "POST":
 		form = PostRestaurant(request.POST)
@@ -391,10 +397,118 @@ def about_member3_remove(request, pk):
 	title.delete()
 	return redirect('backend:backend_ops_about')
 
+def contact_new_header(request):
+	if request.method == "POST":
+		form = PostContactHeader(request.POST)
+		if form.is_valid():
+			section = form.save(commit=False)
+			section.author = request.user
+			section.published_date = timezone.now()
+			section.save()
+			return redirect('backend:contact_header_detail', pk=section.pk)
+	else:
+		form = PostContactHeader()
+	return render(request, 'backend/about_header_new.html', {'form': form})
+
+def contact_new_information(request):
+	if request.method == "POST":
+		form = PostContactInformation(request.POST)
+		if form.is_valid():
+			section = form.save(commit=False)
+			section.author = request.user
+			section.published_date = timezone.now()
+			section.save()
+			return redirect('backend:contact_information_detail', pk=section.pk)
+	else:
+		form = PostContactInformation()
+	return render(request, 'backend/contact_information_new.html', {'form': form})
+
+def contact_new_address(request):
+	if request.method == "POST":
+		form = PostContactAddress(request.POST)
+		if form.is_valid():
+			section = form.save(commit=False)
+			section.author = request.user
+			section.published_date = timezone.now()
+			section.save()
+			return redirect('backend:contact_address_detail', pk=section.pk)
+	else:
+		form = PostContactAddress()
+	return render(request, 'backend/contact_address_new.html', {'form': form})
+
+def contact_header_detail(request, pk):
+	section = get_object_or_404(Contact_Header, pk=pk)
+	return render(request, 'backend/contact_header_detail.html', {'section': section})
+
+def contact_information_detail(request, pk):
+	section = get_object_or_404(Contact_Information, pk=pk)
+	return render(request, 'backend/contact_information_detail.html', {'section': section})
+
+def contact_address_detail(request, pk):
+	section = get_object_or_404(Contact_Address, pk=pk)
+	return render(request, 'backend/contact_address_detail.html', {'section': section})
+
+def contact_header_edit(request, pk):
+	section = get_object_or_404(Contact_Header, pk=pk)
+	if request.method == "POST":
+		form = PostContactHeader(request.POST, instance=section)
+		if form.is_valid():
+			section = form.save(commit=False)
+			section.author = request.user
+			section.published_date = timezone.now()
+			section.save()
+			return redirect('backend:contact_header_detail', pk=section.pk)
+	else:
+		form = PostContactHeader(instance=section)
+	return render(request, 'backend/section_edit.html', {'form': form})
+
+def contact_information_edit(request, pk):
+	section = get_object_or_404(Contact_Information, pk=pk)
+	if request.method == "POST":
+		form = PostContactInformation(request.POST, instance=section)
+		if form.is_valid():
+			section = form.save(commit=False)
+			section.author = request.user
+			section.published_date = timezone.now()
+			section.save()
+			return redirect('backend:contact_information_detail', pk=section.pk)
+	else:
+		form = PostContactInformation(instance=section)
+	return render(request, 'backend/section_edit.html', {'form': form})
+
+def contact_address_edit(request, pk):
+	section = get_object_or_404(Contact_Address, pk=pk)
+	if request.method == "POST":
+		form = PostContactAddress(request.POST, instance=section)
+		if form.is_valid():
+			section = form.save(commit=False)
+			section.author = request.user
+			section.published_date = timezone.now()
+			section.save()
+			return redirect('backend:contact_address_detail', pk=section.pk)
+	else:
+		form = PostContactAddress(instance=section)
+	return render(request, 'backend/section_edit.html', {'form': form})
+
+def contact_header_remove(request, pk):
+	title = get_object_or_404(Contact_Header, pk=pk)
+	title.delete()
+	return redirect('backend:backend_ops_contact')
+
+def contact_information_remove(request, pk):
+	title = get_object_or_404(Contact_Information, pk=pk)
+	title.delete()
+	return redirect('backend:backend_ops_contact')
+
+def contact_address_remove(request, pk):
+	title = get_object_or_404(Contact_Address, pk=pk)
+	title.delete()
+	return redirect('backend:backend_ops_contact')
+
+
 def staff_list(request):
 	user = User.objects.all()
 	return render(request, 'backend/staff_list_users.html', {'user': user})
-
 
 def signup(request):
     if request.method == 'POST':

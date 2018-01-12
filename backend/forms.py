@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
-from .models import Attractions, Restaurants, Apartments, About_PageTitle, About_PresentationText, About_TeamTitle, About_MemberOne, About_MemberTwo, About_MemberThree
+from .models import Attractions, Restaurants, Apartments, About_PageTitle, About_PresentationText, About_TeamTitle, About_MemberOne, About_MemberTwo, About_MemberThree, Contact_Header, Contact_Information, Contact_Address
 
 class SignUpForm(UserCreationForm):
 
@@ -68,6 +68,24 @@ class PostAboutMemberThree(forms.ModelForm):
 
     class Meta:
         model = About_MemberThree
+        fields = ('title', 'text',)
+
+class PostContactHeader(forms.ModelForm):
+
+    class Meta:
+        model = Contact_Header
+        fields = ('title', 'text',)
+
+class PostContactInformation(forms.ModelForm):
+
+    class Meta:
+        model = Contact_Information
+        fields = ('title', 'text',)
+
+class PostContactAddress(forms.ModelForm):
+
+    class Meta:
+        model = Contact_Address
         fields = ('title', 'text',)
 
 # class SignUpForm(UserCreationForm):

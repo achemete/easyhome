@@ -14,7 +14,7 @@ urlpatterns = [
 	url(r'^backend/operations/apartments$', views.backend_ops_apartments_PageView.as_view(), name='backend_ops_apartments'),
 	url(r'^backend/operations/landing$', views.backend_ops_landing, name='backend_ops_landing'),
 	url(r'^backend/operations/about$', views.backend_ops_about, name='backend_ops_about'),
-
+	url(r'^backend/operations/contact$', views.backend_ops_about, name='backend_ops_contact'),
 	# url(r'^backend/operations/landing$', views.backend_ops_landing_PageView.as_view(), name='backend_ops_landing'),
 	# url(r'^backend/operations/contact$', views.backend_ops_contact_PageView.as_view(), name='backend_ops_contact'),
 	# url(r'^backend/operations/about$', views.backend_ops_about_PageView.as_view(), name='backend_ops_about'),
@@ -67,8 +67,26 @@ urlpatterns = [
 	url(r'^backend/about/member3/(?P<pk>\d+)/remove/$', login_required(views.about_member3_remove), name='about_member3_remove'),
 
 
-	url(r'^backend/staff/list/$', login_required(views.staff_list), name='staff_list'),
+	url(r'^backend/contact/add_header$', views.contact_new_header, name='contact_new_header'),
+	url(r'^backend/contact/add_information$', views.contact_new_information, name='contact_new_information'),
+	url(r'^backend/contact/add_address$', views.contact_new_address, name='contact_new_address'),
 
+	url(r'^backend/contact/header/(?P<pk>\d+)/$', views.contact_header_detail, name='contact_header_detail'),
+	url(r'^backend/contact/information/(?P<pk>\d+)/$', views.contact_information_detail, name='contact_information_detail'),
+	url(r'^backend/contact/address/(?P<pk>\d+)/$', views.contact_address_detail, name='contact_address_detail'),
+
+	url(r'^backend/contact/header/(?P<pk>\d+)/edit/$', login_required(views.contact_header_edit), name='contact_header_edit'),
+	url(r'^backend/contact/information/(?P<pk>\d+)/edit/$', login_required(views.contact_information_edit), name='contact_information_edit'),
+	url(r'^backend/contact/address/(?P<pk>\d+)/edit/$', login_required(views.contact_address_edit), name='contact_address_edit'),
+
+	url(r'^backend/contact/header/(?P<pk>\d+)/remove/$', login_required(views.contact_header_remove), name='contact_header_remove'),
+	url(r'^backend/contact/information/(?P<pk>\d+)/remove/$', login_required(views.contact_information_remove), name='contact_information_remove'),
+	url(r'^backend/contact/address/(?P<pk>\d+)/remove/$', login_required(views.contact_address_remove), name='contact_address_remove'),	
+
+	
+
+
+	url(r'^backend/staff/list/$', login_required(views.staff_list), name='staff_list'),
 
     url(r'^signup/$', views.signup, name='signup'),
 

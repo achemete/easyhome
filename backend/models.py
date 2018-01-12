@@ -98,6 +98,35 @@ class About_MemberThree(models.Model):
 	published_date = models.DateTimeField(
 			blank=True, null=True)
 
+class Contact_Header(models.Model):
+	author = models.ForeignKey('auth.User')
+	title = models.CharField(max_length=200)
+	text = models.TextField()
+	#text = RichTextUploadingField()
+	created_date = models.DateTimeField(
+			default=timezone.now)
+	published_date = models.DateTimeField(
+			blank=True, null=True)
+
+class Contact_Information(models.Model):
+	author = models.ForeignKey('auth.User')
+	title = models.CharField(max_length=200)
+	text = models.TextField()
+	#text = RichTextUploadingField()
+	created_date = models.DateTimeField(
+			default=timezone.now)
+	published_date = models.DateTimeField(
+			blank=True, null=True)
+
+class Contact_Address(models.Model):
+	author = models.ForeignKey('auth.User')
+	title = models.CharField(max_length=200)
+	text = models.TextField()
+	#text = RichTextUploadingField()
+	created_date = models.DateTimeField(
+			default=timezone.now)
+	published_date = models.DateTimeField(
+			blank=True, null=True)
 
 
 
