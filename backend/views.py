@@ -506,6 +506,26 @@ def contact_address_remove(request, pk):
 	return redirect('backend:backend_ops_contact')
 
 
+def to_del_user(request):
+	user = User.objects.all()
+	return render(request, 'backend/staff_delete_users.html', {'user': user})
+
+@staff_member_required 
+def del_user(request, pk):    
+    try:
+        user = User.objects.get(pk = pk)
+        user.delete()
+        messages.sucess(request, "The user is deleted")            
+
+    except User.DoesNotExist:
+        messages.error(request, "User doesnot exist")    
+        return render(request, 'backend/operations.html')
+
+    except Exception as e: 
+        return render(request, 'backend/operations.html',{'err':e.message})
+
+    return render(request, 'backend/operations.html') 
+
 def staff_list(request):
 	user = User.objects.all()
 	return render(request, 'backend/staff_list_users.html', {'user': user})

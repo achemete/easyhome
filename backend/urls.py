@@ -84,8 +84,8 @@ urlpatterns = [
 	url(r'^backend/contact/address/(?P<pk>\d+)/remove/$', login_required(views.contact_address_remove), name='contact_address_remove'),	
 
 	
-
-
+    url(r'^backend/accounts/delete$', login_required(views.to_del_user), name='staff_predel_user'),  
+	url(r'^backend/accounts/(?P<pk>\d+)/delete/$', login_required(views.del_user), name='del_user'),  
 	url(r'^backend/staff/list/$', login_required(views.staff_list), name='staff_list'),
 
     url(r'^signup/$', views.signup, name='signup'),

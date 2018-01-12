@@ -853,42 +853,7 @@ ul#myList {
 .map {
 background:#3E8FBA;
 }
-/*--map end here--*/
-/*--footer style start here--*/
-.footer {
-	background:#3E8FBA;
-	padding: 1em 0px;
-}
-.footer-left h2 {
-  font-size: 2.5em;
-  margin: 0px;
-  font-family: 'Montserrat', sans-serif;
-}
-.footer-left h2 a{
-  color:#fff;
-  text-decoration:none;
-}
-.footer-left h2 a:hover{
-  color:#fff;
-}
-.footer-right p {
-	font-size: 1em;
-	color: #fff;
-	text-align: right;
-	margin-top: 15px;
-}
-.footer-right p a {
-    color: #FAA026;
-}
-.footer-right p a:hover{
-	text-decoration:none;
-	color:#fff;
-	transition: 0.5s all;
- -webkit-transition: 0.5s all;
- -moz-transition:  0.5s all;
- -o-transition:  0.5s all;
-}
-/*--footer style end here--*/
+
 /*--about start here--*/
 .location {
 	background: rgba(153, 153, 153, 0.04);
