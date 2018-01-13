@@ -510,15 +510,35 @@ def to_del_user(request):
 	user = User.objects.all()
 	return render(request, 'backend/staff_delete_users.html', {'user': user})
 
+def staff_accounts_abuse(request):
+	user = User.objects.all()
+	return render(request, 'backend/staff_accounts_abuse.html', {'user': user})
+
+@staff_member_required 
+def staff_ban_user(request, pk):
+    user = User.objects.get(pk = pk)
+    user.is_active = False
+    user.save()
+    #messages.success(request, 'Profile successfully banned.')
+    return redirect('backend:staff_accounts_abuse')
+
+@staff_member_required 
+def staff_unban_user(request, pk):
+    user = User.objects.get(pk = pk)
+    user.is_active = True
+    user.save()
+    #messages.success(request, 'Profile successfully unbanned.')
+    return redirect('backend:staff_accounts_abuse')
+
 @staff_member_required 
 def del_user(request, pk):    
     try:
         user = User.objects.get(pk = pk)
         user.delete()
-        messages.sucess(request, "The user is deleted")            
+        #messages.sucess(request, "The user is deleted")            
 
     except User.DoesNotExist:
-        messages.error(request, "User doesnot exist")    
+        #messages.error(request, "User doesnot exist")    
         return render(request, 'backend/operations.html')
 
     except Exception as e: 

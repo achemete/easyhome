@@ -9,7 +9,9 @@
 	
 		<!-- CSS Shts -->
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		
+
+		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 		<!--[if lt IE 9]>
 			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -60,20 +62,19 @@
 			<hr>
 
 			<ul class="nav nav-stacked">
-				<li><a href="{% url 'frontend:frontend_home' %}"><i class="glyphicon glyphicon-home"></i> Go to EasyHouse Site</a></li>
+				<li><a href="{% url 'frontend:frontend_home' %}"><i class="glyphicon glyphicon-share-alt"></i> Go to EasyHouse Site</a></li>
 				<li class="active"> <a href="{% url 'backend:backend_home' %}"><i class="glyphicon glyphicon-home"></i> EasyHouse Backend</a></li>
 				
 				<li class="nav-header"> <a href="#" data-toggle="collapse" data-target="#userMenu"><strong>Operations</strong> <i class="glyphicon glyphicon-chevron-down"></i></a>
 					<ul class="nav nav-stacked collapse in" id="userMenu">
-						<li><a href="{% url 'backend:operations' %}"><i class="glyphicon glyphicon-cog"></i> Overview</a></li>
-						<li><a href="{% url 'backend:backend_ops_landing' %}"><i class="glyphicon glyphicon-cog"></i> Landing</a></li>
-						<li><a href="{% url 'backend:operations' %}"><i class="glyphicon glyphicon-cog"></i> Accomodations</a></li>
-						<li><a href="{% url 'backend:operations' %}"><i class="glyphicon glyphicon-cog"></i> Restaurants</a></li>
-						<li><a href="{% url 'backend:operations' %}"><i class="glyphicon glyphicon-cog"></i> Attractions</a></li>
-						<li><a href="{% url 'backend:operations' %}"><i class="glyphicon glyphicon-cog"></i> Deals</a></li>
-						<li><a href="{% url 'backend:backend_ops_about' %}"><i class="glyphicon glyphicon-cog"></i> About</a></li>
-						<li><a href="{% url 'backend:backend_ops_contact' %}"><i class="glyphicon glyphicon-cog"></i> Contact</a></li>
-						<li><a href="{% url 'backend:operations' %}"><i class="glyphicon glyphicon-cog"></i> Users</a></li>
+						<li><a href="{% url 'backend:operations' %}"><i class="fa fa-window-restore fa-1"></i> Overview</a></li>
+						<li><a href="{% url 'backend:backend_ops_landing' %}"><i class="fa fa-plane fa-1"></i> Landing</a></li>
+						<li><a href="{% url 'backend:operations' %}"><i class="fa fa-bed fa-1"></i> Accomodations</a></li>
+						<li><a href="{% url 'backend:operations' %}"><i class="fa fa-cutlery fa-1"></i> Restaurants</a></li>
+						<li><a href="{% url 'backend:operations' %}"><i class="fa fa-camera-retro fa-1"></i> Attractions</a></li>
+						<li><a href="{% url 'backend:operations' %}"><i class="fa fa-heart-o fa-1"></i> Deals</a></li>
+						<li><a href="{% url 'backend:backend_ops_about' %}"><span class="fa fa-question-circle-o fa-1"></span> About</a></li>
+						<li><a href="{% url 'backend:backend_ops_contact' %}"><i class="glyphicon glyphicon glyphicon-envelope"></i> Contact</a></li>
 					</ul>
 					<li><a href="{% url 'backend:staff_list' %}"><i class="glyphicon glyphicon-user"></i> Staff List</a></li>
 					<li><a href=""><i class="glyphicon glyphicon-off"></i> Logout</a></li>

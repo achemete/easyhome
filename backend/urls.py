@@ -83,7 +83,9 @@ urlpatterns = [
 	url(r'^backend/contact/information/(?P<pk>\d+)/remove/$', login_required(views.contact_information_remove), name='contact_information_remove'),
 	url(r'^backend/contact/address/(?P<pk>\d+)/remove/$', login_required(views.contact_address_remove), name='contact_address_remove'),	
 
-	
+	url(r'^backend/accounts/unban/(?P<pk>\d+)/$', login_required(views.staff_unban_user), name='staff_unban_user'),
+	url(r'^backend/accounts/ban/(?P<pk>\d+)/$', login_required(views.staff_ban_user), name='staff_ban_user'),
+	url(r'^backend/accounts/abuse$', login_required(views.staff_accounts_abuse), name='staff_accounts_abuse'),  
     url(r'^backend/accounts/delete$', login_required(views.to_del_user), name='staff_predel_user'),  
 	url(r'^backend/accounts/(?P<pk>\d+)/delete/$', login_required(views.del_user), name='del_user'),  
 	url(r'^backend/staff/list/$', login_required(views.staff_list), name='staff_list'),
