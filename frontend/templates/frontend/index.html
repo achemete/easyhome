@@ -64,8 +64,8 @@
 					</ul>
 				{% else %}
 					<ul class="nav navbar-nav navbar-right">
-						<li><a id="contact-form" href=""><i class="fa fa-envelope-o fa-lg"></i> Contact</a></li>
-						<li><a id="about" href=""><i class="fa fa-question-circle-o fa-lg"></i> About</a></li>
+						<li><a id="contact-form" href="{% url 'frontend:frontend_contact' %}"><i class="fa fa-envelope-o fa-lg"></i> Contact</a></li>
+						<li><a id="about" href="{% url 'frontend:frontend_about' %}"><i class="fa fa-question-circle-o fa-lg"></i> About</a></li>
 						<li><a id="signup" class="btn" href="{% url 'backend:signup' %}"><i class="fa fa-user-plus fa-lg"></i> Sign Up</a></li>
 						<li><a id="login" href="{% url 'frontend:login' %}"><i class="fa fa-sign-in fa-lg"></i> Login</a></li>
 					</ul>
