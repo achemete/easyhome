@@ -32,7 +32,7 @@
                 <td>{{ user.email }}</td>
                 <td>{{ user.is_staff }}</td>
                 <td>{{ user.is_active }}</td>
-                <td style="text-align: center"><a alt="Ban" href="{% url 'backend:staff_ban_user' pk=user.pk %}"><span style="color: red" class="fa fa-ban fa-lg"></span></a>&nbsp;&nbsp;<a href="{% url 'backend:staff_unban_user' pk=user.pk %}"><span style="color: green" class="fa fa-check fa-lg"></span></a></td>
+                <td style="text-align: center"><a alt="Ban" href="{% url 'backend:staff_ban_user' pk=user.pk %}"><span style="color: red" class="fa fa-ban fa-lg"></span></a>&nbsp;&nbsp;<a href="{% url 'backend:staff_unban_user' pk=user.pk %}"><span style="color: green" class="fa fa-check fa-lg"></span></a>&nbsp;&nbsp;<a href="{% url 'backend:del_user' pk=user.pk %}"><span class="glyphicon glyphicon-trash"></span></a></td>
             </tr>
             {% endfor %}
         </tbody>

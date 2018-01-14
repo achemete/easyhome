@@ -55,7 +55,6 @@ def backend_ops_landing(request):
 	apartments = Apartments.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
 	return render(request, 'backend/backend_ops_landing.html', {'restaurants': restaurants, 'attractions': attractions, 'apartments':apartments})
 
-# add all the iterators
 def backend_ops_about(request):
 	titles = About_PageTitle.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
 	presentations = About_PresentationText.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
@@ -70,6 +69,10 @@ def backend_ops_contact(request):
 	informations = Contact_Information.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
 	addresses = Contact_Address.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
 	return render(request, 'backend/backend_ops_contact.html', {'headers': headers, 'informations': informations, 'addresses':addresses})
+
+def backend_ops_apartments(request):
+	apartments = House_User.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+	return render(request, 'backend/backend_ops_apartments.html', {'apartments': apartments})
 
 def landing_new_restaurant(request):
 	if request.method == "POST":
@@ -522,6 +525,25 @@ def house_details(request, pk):
 	section = get_object_or_404(House_User, pk=pk)
 	return render(request, 'backend/house_detail.html', {'section': section})
 
+def house_edit(request, pk):
+	section = get_object_or_404(House_User, pk=pk)
+	if request.method == "POST":
+		form = PostHouse(request.POST, instance=section)
+		if form.is_valid():
+			section = form.save(commit=False)
+			section.author = request.user
+			section.published_date = timezone.now()
+			section.save()
+			return redirect('backend:house_details', pk=section.pk)
+	else:
+		form = PostHouse(instance=section)
+	return render(request, 'backend/house_edit.html', {'form': form})
+
+def house_remove(request, pk):
+	title = get_object_or_404(House_User, pk=pk)
+	title.delete()
+	return redirect('backend:operations')
+	house_remove
 
 def to_del_user(request):
 	user = User.objects.all()

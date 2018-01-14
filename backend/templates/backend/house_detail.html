@@ -8,8 +8,8 @@
                 {{ section.published_date }}
             </div>
         {% endif %}
-        <a class="btn btn-default" href="{% url 'backend:contact_header_edit' pk=section.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
-        <a class="btn btn-default" href="{% url 'backend:contact_header_remove' pk=section.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+        <a class="btn btn-default" href="{% url 'backend:house_edit' pk=section.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+        <a class="btn btn-default" href="{% url 'backend:house_remove' pk=section.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
         <h1>{{ section.title }}</h1>
         <p>{{ section.author|linebreaksbr }}</p>
         <p>{{ section.description|safe }}</p>

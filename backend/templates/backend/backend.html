@@ -45,7 +45,7 @@
 					<a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#"><i class="glyphicon glyphicon-user"></i> {{request.user.username}} <span class="caret"></span></a>
 					<ul id="g-account-menu" class="dropdown-menu" role="menu">
 						<li><a href="#">My Profile</a></li>
-						<li><a href="#">Change My Password</a></li>
+						<li><a href="{% url 'frontend:password_reset' %}">Change My Password</a></li>
 					</ul>
 				</li>
 				<li><a href="{% url 'frontend:logout' %}?next={% url 'frontend:frontend_home' %}"><i class="glyphicon glyphicon-lock"></i> Logout</a></li>
@@ -72,16 +72,17 @@
 				<li class="nav-header"> <a href="#" data-toggle="collapse" data-target="#userMenu"><strong>Operations</strong> <i class="glyphicon glyphicon-chevron-down"></i></a>
 					<ul class="nav nav-stacked collapse in" id="userMenu">
 						<li><a href="{% url 'backend:operations' %}"><i class="fa fa-window-restore fa-1"></i> Overview</a></li>
+						<li><a href="{% url 'backend:backend_ops_apartments' %}"><i class="fa fa-building-o fa-1"></i> Apartments submitted</a></li>
 						<li><a href="{% url 'backend:backend_ops_landing' %}"><i class="fa fa-plane fa-1"></i> Landing</a></li>
-						<li><a href="{% url 'backend:operations' %}"><i class="fa fa-bed fa-1"></i> Accomodations</a></li>
-						<li><a href="{% url 'backend:operations' %}"><i class="fa fa-cutlery fa-1"></i> Restaurants</a></li>
-						<li><a href="{% url 'backend:operations' %}"><i class="fa fa-camera-retro fa-1"></i> Attractions</a></li>
+						<li><a href="{% url 'backend:operations' %}"><i class="fa fa-bed fa-1"></i> Accomodations (static)</a></li>
+						<li><a href="{% url 'backend:operations' %}"><i class="fa fa-cutlery fa-1"></i> Restaurants (static)</a></li>
+						<li><a href="{% url 'backend:operations' %}"><i class="fa fa-camera-retro fa-1"></i> Attractions (static)</a></li>
 						<li><a href="{% url 'backend:operations' %}"><i class="fa fa-heart-o fa-1"></i> Deals</a></li>
 						<li><a href="{% url 'backend:backend_ops_about' %}"><span class="fa fa-question-circle-o fa-1"></span> About</a></li>
 						<li><a href="{% url 'backend:backend_ops_contact' %}"><i class="glyphicon glyphicon glyphicon-envelope"></i> Contact</a></li>
 					</ul>
-					<li><a href="{% url 'backend:staff_list' %}"><i class="glyphicon glyphicon-user"></i> Staff List</a></li>
-					<li><a href=""><i class="glyphicon glyphicon-off"></i> Logout</a></li>
+					<li><a href="{% url 'backend:staff_accounts_abuse' %}"><i class="glyphicon glyphicon-user"></i> Users management</a></li>
+					<li><a href="{% url 'frontend:logout' %}"><i class="glyphicon glyphicon-off"></i> Logout</a></li>
 				</li>
 				<li class="nav-header">
 					<a href="#" data-toggle="collapse" data-target="#menu3"> Social Media <i class="glyphicon glyphicon-chevron-right"></i></a>
@@ -114,7 +115,9 @@
 </div>
 <!-- /Main -->
 
-<footer class="text-center">Easy House - All rights reserved</footer>
+<footer class="text-center">
+	<p>Easy House - All rights reserved</p>
+</footer>
 
 </body>
 </html>

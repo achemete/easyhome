@@ -1,15 +1,19 @@
 {% extends 'frontend/index.html' %}
 
 {% load staticfiles %}
-
 {% block content %}
 
-<div class="section">
-  <h2>Sign up</h2>
+<link href="{% static '../static/css/signup_style.css' %}" rel="stylesheet">
+
+<div class="form">
+  <ul class="tab-group">
+    <li class="tab"><a href="{% url 'backend:signup' %}">Sign Up</a></li>
+    <li class="tab activate"><a href="{% url 'frontend:login' %}" style="background-color: #cbb25c;">Log In</a></li>
+  </ul>
   <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Sign up</button>
+    <button class="button" type="submit">Sign up</button>
   </form>
 </div>
 
