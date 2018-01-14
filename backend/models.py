@@ -9,8 +9,9 @@ from django.db import models
 from django.utils import timezone
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-#from ckeditor_uploader.fields import RichTextUploadingField
-#from ckeditor.fields import RichTextField
+
+from ckeditor_uploader.fields import RichTextUploadingField
+from ckeditor.fields import RichTextField
 
 class Attractions(models.Model):
 	author = models.ForeignKey('auth.User')
@@ -131,14 +132,27 @@ class Contact_Address(models.Model):
 # class House_Creation(models.Model):
 # 	author = models.ForeignKey('auth.User')
 # 	title = models.CharField(max_length=200)
-# 	text = models.TextField()
-# 	#text = RichTextUploadingField()
+# 	#description = models.TextField()
+# 	description = RichTextUploadingField()
+# 	city = models.CharField(max_length=200)
+# 	price = models.CharField(max_length=200)
+# 	#image = models.ImageField(upload_to='houses/%Y/%m/%d/')
 # 	created_date = models.DateTimeField(
 # 			default=timezone.now)
 # 	published_date = models.DateTimeField(
 # 			blank=True, null=True)
 
-
+class House_User(models.Model):
+	author = models.ForeignKey('auth.User')
+	title = models.CharField(max_length=200)
+	#description = models.TextField()
+	description = RichTextUploadingField()
+	city = models.CharField(max_length=200)
+	price = models.CharField(max_length=200)
+	created_date = models.DateTimeField(
+			default=timezone.now)
+	published_date = models.DateTimeField(
+			blank=True, null=True)
 
 # class Profile(models.Model):
 #     user = models.OneToOneField(User, on_delete=models.CASCADE)

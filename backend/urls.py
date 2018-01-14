@@ -3,6 +3,9 @@ from django.conf.urls import include, url
 import frontend
 from . import views
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 from django.contrib.auth.decorators import login_required
 
 app_name = 'backend'
@@ -83,6 +86,12 @@ urlpatterns = [
 	url(r'^backend/contact/information/(?P<pk>\d+)/remove/$', login_required(views.contact_information_remove), name='contact_information_remove'),
 	url(r'^backend/contact/address/(?P<pk>\d+)/remove/$', login_required(views.contact_address_remove), name='contact_address_remove'),	
 
+
+	url(r'^backend/houses/add_house$', views.house_create, name='house_create'),
+	url(r'^backend/houses/detail/(?P<pk>\d+)/$', views.house_details, name='house_details'),
+
+
+
 	url(r'^backend/accounts/unban/(?P<pk>\d+)/$', login_required(views.staff_unban_user), name='staff_unban_user'),
 	url(r'^backend/accounts/ban/(?P<pk>\d+)/$', login_required(views.staff_ban_user), name='staff_ban_user'),
 	url(r'^backend/accounts/abuse$', login_required(views.staff_accounts_abuse), name='staff_accounts_abuse'),  
@@ -93,5 +102,5 @@ urlpatterns = [
     url(r'^signup/$', views.signup, name='signup'),
 
 
-]
+] 
 

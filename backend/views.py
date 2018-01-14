@@ -505,6 +505,23 @@ def contact_address_remove(request, pk):
 	title.delete()
 	return redirect('backend:backend_ops_contact')
 
+def house_create(request):
+	if request.method == "POST":
+		form = PostHouse(request.POST)
+		if form.is_valid():
+			section = form.save(commit=False)
+			section.author = request.user
+			section.published_date = timezone.now()
+			section.save()
+			return redirect('backend:house_details', pk=section.pk) 
+	else:
+		form = PostHouse()
+	return render(request, 'backend/house_create.html', {'form': form})
+
+def house_details(request, pk):
+	section = get_object_or_404(House_User, pk=pk)
+	return render(request, 'backend/house_detail.html', {'section': section})
+
 
 def to_del_user(request):
 	user = User.objects.all()
@@ -516,50 +533,50 @@ def staff_accounts_abuse(request):
 
 @staff_member_required 
 def staff_ban_user(request, pk):
-    user = User.objects.get(pk = pk)
-    user.is_active = False
-    user.save()
-    #messages.success(request, 'Profile successfully banned.')
-    return redirect('backend:staff_accounts_abuse')
+	user = User.objects.get(pk = pk)
+	user.is_active = False
+	user.save()
+	#messages.success(request, 'Profile successfully banned.')
+	return redirect('backend:staff_accounts_abuse')
 
 @staff_member_required 
 def staff_unban_user(request, pk):
-    user = User.objects.get(pk = pk)
-    user.is_active = True
-    user.save()
-    #messages.success(request, 'Profile successfully unbanned.')
-    return redirect('backend:staff_accounts_abuse')
+	user = User.objects.get(pk = pk)
+	user.is_active = True
+	user.save()
+	#messages.success(request, 'Profile successfully unbanned.')
+	return redirect('backend:staff_accounts_abuse')
 
 @staff_member_required 
 def del_user(request, pk):    
-    try:
-        user = User.objects.get(pk = pk)
-        user.delete()
-        #messages.sucess(request, "The user is deleted")            
+	try:
+		user = User.objects.get(pk = pk)
+		user.delete()
+		#messages.sucess(request, "The user is deleted")            
 
-    except User.DoesNotExist:
-        #messages.error(request, "User doesnot exist")    
-        return render(request, 'backend/operations.html')
+	except User.DoesNotExist:
+		#messages.error(request, "User doesnot exist")    
+		return render(request, 'backend/operations.html')
 
-    except Exception as e: 
-        return render(request, 'backend/operations.html',{'err':e.message})
+	except Exception as e: 
+		return render(request, 'backend/operations.html',{'err':e.message})
 
-    return render(request, 'backend/operations.html') 
+	return render(request, 'backend/operations.html') 
 
 def staff_list(request):
 	user = User.objects.all()
 	return render(request, 'backend/staff_list_users.html', {'user': user})
 
 def signup(request):
-    if request.method == 'POST':
-        form = SignUpForm(request.POST)
-        if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            raw_password = form.cleaned_data.get('password1')
-            user = authenticate(username=username, password=raw_password)
-            login(request, user)
-            return redirect('frontend:frontend_home')
-    else:
-        form = SignUpForm()
-    return render(request, 'frontend/signup.html', {'form': form})
+	if request.method == 'POST':
+		form = SignUpForm(request.POST)
+		if form.is_valid():
+			form.save()
+			username = form.cleaned_data.get('username')
+			raw_password = form.cleaned_data.get('password1')
+			user = authenticate(username=username, password=raw_password)
+			login(request, user)
+			return redirect('frontend:frontend_home')
+	else:
+		form = SignUpForm()
+	return render(request, 'frontend/signup.html', {'form': form})
