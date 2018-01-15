@@ -17,11 +17,25 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from django.conf.urls.static import static
 from django.conf import settings
+from rest_framework import routers
+from appApi import views
+from appApi import models
+
+
+router = routers.DefaultRouter()
+router.register(r'users', views.UsersViewSet)
+router.register(r'deal',views.DealViewSet)
+router.register(r'attractions',views.AttractionsViewSet)
+router.register(r'restaurant',views.RestaurantViewSet)
+router.register(r'services',views.ServicesViewSet)
+router.register(r'accomodations', views.AccomodationsViewSet)
+router.register(r'reviews', views.ReviewsViewSet)
 
 
 urlpatterns = [
+    url(r'^$',views.AccomodationsListView.as_view(), name="accomodations"),   
     url(r'^admin/', admin.site.urls),
     url(r'', include('backend.urls')),
     url(r'', include('frontend.urls')),
-    url(r'^ckeditor/', include('ckeditor_uploader.urls')),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    url(r'^', include(router.urls)),
+]

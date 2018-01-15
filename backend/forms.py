@@ -2,34 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
-#from ckeditor_uploader.widgets import CKEditorUploadingWidget
-
-from .models import Attractions, Restaurants, Apartments, About_PageTitle, About_PresentationText, About_TeamTitle, About_MemberOne, About_MemberTwo, About_MemberThree, Contact_Header, Contact_Information, Contact_Address, House_User
-
-# class PostNewHouse(forms.ModelForm):
-#     # content = forms.CharField(widget=CKEditorUploadingWidget())
-#     # Reminder: add some extra requirement before meta? 
-#     class Meta:
-#         model = House_Creation
-#         fields = ('title', 'description', 'city', 'price')
-
-class PostHouse(forms.ModelForm):
-
-    class Meta:
-        model = House_User
-        fields = ('title', 'description', 'city', 'price')
-
-class SignUpForm(UserCreationForm):
-
-    first_name = forms.CharField(max_length=30, required=False, help_text='Optional.')
-    last_name = forms.CharField(max_length=30, required=False, help_text='Optional.')
-    location = forms.CharField(max_length=30, required=False, help_text='Optional.')
-    postal = forms.CharField(max_length=30, required=False, help_text='Optional.')
-    email = forms.EmailField(max_length=254, help_text='Required. Inform a valid email address.')
-
-    class Meta:
-        model = User
-        fields = ('username', 'first_name', 'last_name', 'location', 'postal', 'email', 'password1', 'password2', )
+from .models import Attractions, Restaurants, Apartments, About_PageTitle, About_PresentationText, About_TeamTitle, About_MemberOne, About_MemberTwo, About_MemberThree
 
 class PostAttraction(forms.ModelForm):
 
@@ -85,20 +58,20 @@ class PostAboutMemberThree(forms.ModelForm):
         model = About_MemberThree
         fields = ('title', 'text',)
 
-class PostContactHeader(forms.ModelForm):
+# class SignUpForm(UserCreationForm):
+#     first_name = forms.CharField(max_length=30, required=False, help_text='Optional.')
+#     last_name = forms.CharField(max_length=30, required=False, help_text='Optional.')
+#     email = forms.EmailField(max_length=254, help_text='Required. Inform a valid email address.')
 
-    class Meta:
-        model = Contact_Header
-        fields = ('title', 'text',)
+#     class Meta:
+#         model = User
+#         fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2', )
 
-class PostContactInformation(forms.ModelForm):
+# class PostAlgoRight(forms.ModelForm):
 
-    class Meta:
-        model = Contact_Information
-        fields = ('title', 'text',)
+#     class Meta:
+#         model = Algoright
+#         fields = ('title', 'text',)
 
-class PostContactAddress(forms.ModelForm):
-
-    class Meta:
-        model = Contact_Address
-        fields = ('title', 'text',)
+# backend forms to create (at least)
+#BackHomeL, BackHomeR, BackAlgL, BackAlgR

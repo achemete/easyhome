@@ -24,8 +24,6 @@
 
 	<meta name="keywords" content="EasyHouse" />
 
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-
 	<!--Google Fonts-->
 	<link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 	<link href='//fonts.googleapis.com/css?family=Hind:400,300,500,600,700' rel='stylesheet' type='text/css'>
@@ -64,8 +62,8 @@
 					</ul>
 				{% else %}
 					<ul class="nav navbar-nav navbar-right">
-						<li><a id="contact-form" href="{% url 'frontend:frontend_contact' %}"><i class="fa fa-envelope-o fa-lg"></i> Contact</a></li>
-						<li><a id="about" href="{% url 'frontend:frontend_about' %}"><i class="fa fa-question-circle-o fa-lg"></i> About</a></li>
+						<li><a id="contact-form" href=""><i class="fa fa-envelope-o fa-lg"></i> Contact</a></li>
+						<li><a id="about" href=""><i class="fa fa-question-circle-o fa-lg"></i> About</a></li>
 						<li><a id="signup" class="btn" href="{% url 'backend:signup' %}"><i class="fa fa-user-plus fa-lg"></i> Sign Up</a></li>
 						<li><a id="login" href="{% url 'frontend:login' %}"><i class="fa fa-sign-in fa-lg"></i> Login</a></li>
 					</ul>
@@ -113,7 +111,7 @@
 	<div class="copyright">
 		<div class="container">
 			<div class="col-md-6">
-				<p>© <span id="license"></span></p>
+				<p>(C) <span id="license"></span></p>
 			</div>
 			<div class="col-md-6">
 				<ul class="bottom_ul">
